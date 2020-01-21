@@ -59,8 +59,8 @@ if [[ "$BASE_REPO" != "$HEAD_REPO" ]]; then
 fi
 
 git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
-git config --global user.email "action@github.com"
-git config --global user.name "GitHub Action"
+git config --global user.email $(git log --format='%ae' HEAD^!)
+git config --global user.name $(git log --format='%an' HEAD^!)
 
 set -o xtrace
 
